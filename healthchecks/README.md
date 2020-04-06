@@ -39,9 +39,9 @@ resource_port = "80"
 ---
 
 I could have created them one by one, but that's not very efficient or practical.
-I tried creating an arraym but using arrays would simply create a list and if we then changed the servers or the order of the list or removed one, ti would all go to hell...
+I tried creating an array but using arrays would simply create a list and if we then changed the servers or the order of the list or removed one, it would all go to hell...
 
-So, long story short, I create a map of maps in the variables.tf file like so:
+So, long story short, I created a map of maps in the variables.tf file like so:
 ```
 variable "servers" {
     default = {
@@ -70,7 +70,7 @@ and then link that map to the resource creation like this:
 
 #### Creating the Healthcheck
 
-- Using `for_each` will iterate the map and store on each iteration all elements in the `each` "variable", and the item parameters can be accessed like `each.value.PARAMETER`, i.e. `each.value.ip_address`:
+- Using `for_each` will iterate the map and store on each iteration all maps' parameter in the `each` "variable", and the item parameters can be accessed like `each.value.PARAMETER`, i.e. `each.value.ip_address`:
 
 ```
 resource "aws_route53_health_check" "prod_hc" {
@@ -122,7 +122,7 @@ resource "aws_cloudwatch_metric_alarm" "alarm" {
 }
 ```
 
-I also struggled a while to figure out the way to link the alarm (in terms of AWS) to the halthcheck, was to set the correct `dimensions`
+I also struggled a while to figure out the way to link the alarm (in terms of AWS) to the halthcheck, was to set the correct `dimensions` coming from the healthchecks
 
 
 ### And that's it!
