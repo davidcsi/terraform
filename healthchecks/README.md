@@ -13,22 +13,28 @@ In this case i had a few servers I needed to monitor with HealthChecks, and trig
 I had a list of servers like this:
 
 ###### Server 1
-> ip_address = "1.2.3.4"
+```
+ip_address = "1.2.3.4"
 healthcheck_name = "server-1-failure"
 resource_path = "/Alive.html"
 resource_port = "80"
+```
 
 ###### Server 2
-> ip_address = "4.3.2.1"
+```
+ip_address = "4.3.2.1"
 healthcheck_name = "server-2-failure"
 resource_path = "/Alive.html"
 resource_port = "80"
+```
 
 ###### Server 3
-> ip_address = "9.8.7.6"
+```
+ip_address = "9.8.7.6"
 healthcheck_name = "server-3-failure"
 resource_path = "/alive.html"
 resource_port = "80"
+```
 
 ---
 
